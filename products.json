@@ -1,0 +1,50 @@
+[
+{
+	"id":"1",
+	"name":"sample product",
+	"price":"250",
+	"category":"casual"
+},
+{
+	"id":"2",
+	"name":"another product",
+	"price":"110",
+	"category":"casual"
+},
+{
+	"id":"3",
+	"name":"shirt",
+	"price":"123",
+	"category":"formal"
+},
+{
+	"id":"4",
+	"name":"cheap",
+	"price":"1",
+	"category":"formal"
+},
+{
+	"id":"5",
+	"name":"expensive",
+	"price":"123531230",
+	"category":"rich"
+},
+{
+	"id":"6",
+	"name":"free",
+	"price":"0",
+	"category":"casual"
+},
+{
+	"id":"7",
+	"name":"wrap",
+	"price":"99",
+	"category":"casual"
+},
+{
+	"id":"8",
+	"name":"xyz",
+	"price":"20",
+	"category":"formal"
+}
+]

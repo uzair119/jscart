@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>My shopping cart</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="cart.html">Home </a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" id="hellomsg">Hello, guest!</a>
+        </li>
+      </ul>
+      <div class="nav-item" style="float:right;">
+        <a class="nav-link" href="checkout.html"><img style="width:35px" src="cart.jpg"> <span id="cartbadge" class="badge badge-pill badge-danger" style="top:-10px; left: -20px; z-index: 1000; position: relative">0</span></a>
+      </div> 
+      </nav>
+     <div class="row">
+      <div style="margin-top: 5%" class="col-md-4 offset-md-1">
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" class="form-control" id="name" required>
+          </div>
+          <div class="form-group">
+            <label >Address:</label>
+            <input type="text" class="form-control" id="address" required>
+          </div>
+          <div class="form-group">
+            <label >Postcode:</label>
+            <input type="text" class="form-control" id="postcode" required>
+          </div>
+          <div class="form-group">
+            <label >Delivery Notes:</label>
+            <textarea rows=4 class="form-control" id="deliverynotes"></textarea>
+          </div>
+          <button type="button" class="btn btn-success" id="save" onclick="saveUserInfo()">Save </button>
+          <button type="button" class="btn btn-danger" id="clear" onclick="clearUserInfo()">Clear </button>
+      </div>
+      <div class="summary" style="width:30%;position:relative; left:20%; margin: 30px 10px 10px 10px; border: 2px solid black; ">
+      <div class="cart" style="position:relative;left:30%;">
+        <h1>Summary: </h1>
+        <hr style="position:relative;right:30%;">
+        <ol id="cartlist" >
+      </div> 
+    </div>
+    </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+<script src="common-script.js"></script>
+<script src="checkout-script.js"></script>

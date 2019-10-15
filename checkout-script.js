@@ -26,7 +26,7 @@ var products;
     {  
       $.getJSON("products.json", function(json) {
         // console.log(json); // show the JSON file content into console
-        products=json;        
+        products=json.products;        
       });
     }
     
@@ -78,8 +78,10 @@ var products;
 
     function getProductIndexByID(productID)
     {
+      console.log(products);
         for(var i = 0; i < products.length; i++)
         {
+          console.log(products);
             if(products[i].id == productID)
                 return i;
         } 
@@ -91,15 +93,17 @@ var products;
         var total = 0;
         for(var productID in cartContents)
         {
+          console.log(cartContents);
             var index = getProductIndexByID(productID);
+            console.log(index);
             var product=products[index];
             var quantity = cartContents[productID];
             total += product.price*quantity;
 
-            $('#cartlist').append('<li>' + '<h6>' + product.name + '</h6>' + product.price + ' x $' + quantity + '= $' + (product.price*quantity) + '</li>');
+            $('#cartlist').append('<li style="color:gray; font-family:fantasy">' + '<h6 style="color:crimson">' + product.name + '</h6>' + product.price + ' x $' + quantity + '= $' + (product.price*quantity) + '</li>');
         }
         $('#cartlist').append('</ol>'
-         + '<hr style="position:relative;right:40%;">'
-         + '<h1>$' + total + '</h1>');
+         + '<hr>'
+         + '<h1 style="font-family:fantasy">$' + total + '</h1>');
         // console.log(total);
     }

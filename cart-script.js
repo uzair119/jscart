@@ -8,6 +8,8 @@ $(document).ready(function () {
   products = {};
   productCategories = new Set();
 
+  
+  
   $.ajaxSetup({
     async: false
   });
@@ -92,8 +94,8 @@ function addToCart(productIndex) {
 
 async function populateCategories() {
 
-  $.getJSON("products2.json", function (json) {
-    console.log(json);
+  $.getJSON("products.json", function (json) {
+    //console.log(json);
     var categories = json.categories;
 
     //console.log(products);

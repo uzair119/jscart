@@ -76,6 +76,37 @@ function getProductIndexByID(productID) {
   return -1;
 }
 
+function changeQuantity(productID){
+  var quantity = $('#cartprodqty'+productID).val();
+  cartContents[productID] = quantity;
+  var index = getProductIndexByID(productID);
+  var product = products[index];
+  $('#cartprodprice'+productID).html((product.price*quantity).toFixed(2));
+  generateTotal();
+  updateCart();
+}
+
+function removeFromCart(productID){
+  delete cartContents[productID];
+  $('#cartprod'+productID).remove();
+  generateTotal();
+  updateCart();    
+}
+
+function generateTotal()
+{
+  var total = 0;
+  for (var productID in cartContents) {
+    var index = getProductIndexByID(productID);
+    var product = products[index];
+    var quantity = cartContents[productID];
+    total += product.price * quantity;
+  }
+  $('#carttotal').html('$'+total.toFixed(2));
+}
+
+
+
 async function generateBill() {
   var total = 0;
   for (var productID in cartContents) {
@@ -84,10 +115,23 @@ async function generateBill() {
     var quantity = cartContents[productID];
     total += product.price * quantity;
 
-    $('#cartlist').append('<li style="color:gray; font-family:fantasy">' + '<h6 style="color:crimson">' + product.name + '</h6>' + product.price + ' x $' + quantity + '= $' + (product.price * quantity) + '</li>');
+    $('#carttable').append('<tr id="cartprod'+productID+'">'+
+                                    '<td>'+ product.name + '</td>' +
+                                    '<td><input class="form-control" min="1" id="cartprodqty'+productID+'" type="number" onchange="changeQuantity('+productID+')" value="' + quantity + '"</td>' + 
+                                    '<td id="cartprodprice'+productID+'" class="text-right">$' + (product.price*quantity).toFixed(2) + '</td>' +
+                                    '<td onclick="removeFromCart('+productID+')"  class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>'+
+                                '</tr>');
+    //$('#cartlist').append('<li style="color:gray; font-family:fantasy">' + '<h6 style="color:crimson">' + product.name + '</h6>' + product.price + ' x $' + quantity + '= $' + (product.price * quantity) + '</li>');
   }
-  $('#cartlist').append('</ol>'
-    + '<hr>'
-    + '<h1 style="font-family:fantasy">$' + total + '</h1>');
+  var totalString = `           <tr>
+                                    <td></td>
+                                    <td><strong>Total</strong></td>
+                                    <td class="text-right"><strong id="carttotal">$`+total+`</strong></td>
+                                    <td></td>
+                                </tr>`;
+  $('#carttable').append(totalString);                              
+  // $('#cartlist').append('</ol>'
+  //   + '<hr>'
+  //   + '<h1 style="font-family:fantasy">$' + total + '</h1>');
   // console.log(total);
 }

@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>My shopping cart</title>
   </head>
-  <body>
+  <body style="background: aliceblue;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
@@ -19,6 +20,7 @@
       </div> 
       </nav>
      <div class="row">
+       
       <div style="margin-top: 5%" class="col-md-4 offset-md-1">
         <div class="form-group">
             <label>Name:</label>
@@ -39,11 +41,42 @@
           <button type="button" class="btn btn-success" id="save" onclick="saveUserInfo()">Save </button>
           <button type="button" class="btn btn-danger" id="clear" onclick="clearUserInfo()">Clear </button>
       </div>
-      <div class="summary" style="width:30%;position:relative; left:20%; margin: 30px 10px 10px 10px; border: 2px solid black; ">
+      
+      <div class="summary" style="width:40%;position:relative; left:10%; margin: 30px 10px 10px 10px; border: 2px solid green; border-radius: 6px;">
       <div class="cart" >
-        <h1 style="position:relative;left:30%;">Summary: </h1>
-        <hr>
-        <ol id="cartlist" >
+        <h1 align="center">Cart contents </h1>
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col-12">
+                    <div style="overflow-y: auto; max-height: 350px;" class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    
+                                    <th scope="col">Product</th>
+                                    <th scope="col" class="text-center">Quantity</th>
+                                    <th scope="col" class="text-right">Price</th>
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody id="carttable">
+                                                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="margin-top: 15px;" class="col mb-2">
+                    <div class="row">
+                        <div class="col-sm-12  col-md-6">
+                            <a href="index.html"><button class="btn btn-block btn-light">Continue Shopping</button></a>
+                        </div>
+                        <div class="col-sm-12 col-md-6 text-right">
+                            <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
       </div> 
     </div>
     </div>

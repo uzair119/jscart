@@ -4,7 +4,10 @@ async function getUserInfo()
       if(storedInfo)
       {
         userInfo = storedInfo;
-        $('#hellomsg').html("Hello, " + userInfo.name);
+        if (userInfo.name == "")
+          $('#hellomsg').html("Enter name here");
+        else
+          $('#hellomsg').html(userInfo.name);
         $('#name').val(userInfo.name);
         $('#address').val(userInfo.address);
         $('#postcode').val(userInfo.postalCode);
@@ -13,7 +16,7 @@ async function getUserInfo()
       }
       else
       {
-        $('#hellomsg').html("Hello, guest");
+        $('#hellomsg').html("Enter name here");
         $('#name').val("");
         $('#address').val("");
         $('#postcode').val("");
@@ -71,3 +74,32 @@ function updateCart()
   if(cartContents)
     localStorage.setItem('savedCart', JSON.stringify(cartContents));
 }
+
+
+function updateName()
+{
+  var changedName = $("#hellomsg").html();
+  changedName = changedName.replace(/(?:&nbsp;|<br>)/g,'');
+  changedName = changedName.trim();
+  
+  console.log(changedName);
+  $("#name").val(changedName);
+  userInfo.name = changedName;
+  userInfo.address = $('#address').val();
+  userInfo.postalCode = $('#postcode').val();
+  userInfo.delnotes = $('#deliverynotes').val();
+  localStorage.setItem('userInfo', JSON.stringify(userInfo));
+}
+
+document.getElementById("hellomsg").contentEditable = true;
+document.getElementById('hellomsg').addEventListener("input", function() {
+  updateName();
+}, false);
+
+$('#hellomsg').keypress(function (evt) {
+
+  var keycode = evt.charCode || evt.keyCode;
+  if (keycode  == 13) { //Enter key's keycode
+    return false;
+  }
+});
